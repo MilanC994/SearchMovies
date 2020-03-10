@@ -149,7 +149,7 @@ display: inline-block;
 }
 @media (max-width:1000px) {
   .iframeDV>iframe {
-      width: 300px;
+      width: 200px;
       height: 200px;
     
   }
