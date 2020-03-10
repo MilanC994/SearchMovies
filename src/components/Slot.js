@@ -14,7 +14,7 @@ import searchPic from '../imgs/search.png'
         return (
             
           <Link style={slotStyle} className='container' to={"/detailedView/"+props.id}>
-              <div className="hiddenDiv"><img style={{marginTop:"50%"}} src={searchPic}/></div> 
+              <div className="hiddenDiv"><img  src={searchPic}/></div> 
                   <div className="h2div"> <h2>{props.title}</h2></div>
             </Link>
         )

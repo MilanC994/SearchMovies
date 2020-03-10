@@ -120,8 +120,17 @@ width: 100%;
 background-color: black;
 opacity: 0.8;
 display: none;
+position: relative;
 
 }
+
+.hiddenDiv>img
+{
+  position: absolute;
+  top:40%;
+
+}
+
 .container:hover .hiddenDiv
 {
 display: inline-block;
