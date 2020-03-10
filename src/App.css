@@ -1,0 +1,162 @@
+.App {
+  
+    
+  width: 65%;
+  margin:auto;
+  background-color:inherit;
+  margin-bottom: 50px; 
+  margin-top: 20px;
+  padding: 20px 20px 20px 20px;
+}
+.searhhBoxDiv
+{
+position: relative;
+
+}
+.searhhBoxDiv>img
+{
+position: absolute;
+left: 5px;bottom: 4px;
+}
+
+
+.iframeDV, .iframeDV>iframe
+{
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.iframeDV>p
+{
+color:  black;
+font-size: 18px;
+text-align: center;
+font-size: 16px;
+}
+
+.btn{
+border-radius: 10px;
+padding: 5px 5px;
+
+}
+.blackBtn
+{
+background-color: black;
+color: white;
+font-weight: bold;
+border: 4px solid black;
+
+
+}
+.whiteBtn
+{
+background-color: white;
+color: black;
+}
+#root
+{
+  background-image: linear-gradient(190deg, #0a0a1f 40%, #347aeb 100%);
+  overflow: hidden;
+  min-height: 100vh;
+  
+
+}
+.header
+{
+  padding-left: 10px;
+  margin-top: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.header>button
+{
+  font-size: 15px;
+  
+}
+.header input
+{
+  margin-top: 15px;
+  font-size: 20px;
+  width: 92%;
+  height: 100%;
+  padding-left: 30px;
+  border-radius: 10px;
+  background:rgba(0, 0, 0, 0.3);
+  color: white;
+}
+.moviesOrTVShowsContainer
+{
+  display:flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.container{
+  height: 500px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #fff;
+  flex: 1 1  40%;
+  min-width: 40%;
+  max-width: 50%;
+  overflow: hidden;
+ position: relative;
+ background-repeat: no-repeat;
+ background-position: center center;
+background-size: 100% 100%;
+ box-shadow: 0px 0px 10px 2px black;
+
+
+ 
+}
+.hiddenDiv
+{
+height: 100%;
+width: 100%;
+background-color: black;
+opacity: 0.8;
+display: none;
+
+}
+.container:hover .hiddenDiv
+{
+display: inline-block;
+}
+
+.h2div
+{
+  width: 100%;
+  min-height: 70px;
+  background-color: black;
+  opacity: 0.7;
+  overflow: hidden;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+}
+
+.App>h1
+{
+  color: #ffbed1;
+}
+.container:hover{
+  cursor: pointer;
+}
+@media (max-width:1000px) {
+  .iframeDV>iframe {
+      width: 300px;
+      height: 200px;
+    
+  }
+
+  .container{
+    max-width: 100%;
+    height: 350px;
+  }
+}
+
