@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/moviesOrTVShowsReact/static/css/main.d123ce66.chunk.css",
-    "main.js": "/moviesOrTVShowsReact/static/js/main.041d066a.chunk.js",
-    "main.js.map": "/moviesOrTVShowsReact/static/js/main.041d066a.chunk.js.map",
-    "runtime-main.js": "/moviesOrTVShowsReact/static/js/runtime-main.ff742ac9.js",
-    "runtime-main.js.map": "/moviesOrTVShowsReact/static/js/runtime-main.ff742ac9.js.map",
-    "static/js/2.b7b79e3a.chunk.js": "/moviesOrTVShowsReact/static/js/2.b7b79e3a.chunk.js",
-    "static/js/2.b7b79e3a.chunk.js.map": "/moviesOrTVShowsReact/static/js/2.b7b79e3a.chunk.js.map",
-    "index.html": "/moviesOrTVShowsReact/index.html",
-    "precache-manifest.6a831a71e7559595926f1e8727627349.js": "/moviesOrTVShowsReact/precache-manifest.6a831a71e7559595926f1e8727627349.js",
-    "service-worker.js": "/moviesOrTVShowsReact/service-worker.js",
-    "static/css/main.d123ce66.chunk.css.map": "/moviesOrTVShowsReact/static/css/main.d123ce66.chunk.css.map",
-    "static/js/2.b7b79e3a.chunk.js.LICENSE.txt": "/moviesOrTVShowsReact/static/js/2.b7b79e3a.chunk.js.LICENSE.txt"
+    "main.css": "/SearchMovies/static/css/main.2b74ff81.chunk.css",
+    "main.js": "/SearchMovies/static/js/main.f5a2586d.chunk.js",
+    "main.js.map": "/SearchMovies/static/js/main.f5a2586d.chunk.js.map",
+    "runtime-main.js": "/SearchMovies/static/js/runtime-main.24a42cb3.js",
+    "runtime-main.js.map": "/SearchMovies/static/js/runtime-main.24a42cb3.js.map",
+    "static/js/2.9f42083b.chunk.js": "/SearchMovies/static/js/2.9f42083b.chunk.js",
+    "static/js/2.9f42083b.chunk.js.map": "/SearchMovies/static/js/2.9f42083b.chunk.js.map",
+    "index.html": "/SearchMovies/index.html",
+    "precache-manifest.9ddd03e2da0a4fbc5df209881d13578c.js": "/SearchMovies/precache-manifest.9ddd03e2da0a4fbc5df209881d13578c.js",
+    "service-worker.js": "/SearchMovies/service-worker.js",
+    "static/css/main.2b74ff81.chunk.css.map": "/SearchMovies/static/css/main.2b74ff81.chunk.css.map",
+    "static/js/2.9f42083b.chunk.js.LICENSE.txt": "/SearchMovies/static/js/2.9f42083b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ff742ac9.js",
-    "static/js/2.b7b79e3a.chunk.js",
-    "static/css/main.d123ce66.chunk.css",
-    "static/js/main.041d066a.chunk.js"
+    "static/js/runtime-main.24a42cb3.js",
+    "static/js/2.9f42083b.chunk.js",
+    "static/css/main.2b74ff81.chunk.css",
+    "static/js/main.f5a2586d.chunk.js"
   ]
 }
