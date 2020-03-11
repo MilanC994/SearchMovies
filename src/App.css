@@ -1,6 +1,6 @@
 .App {
   
-  width: 65%;
+  width: 60%;
   margin:auto;
   background-color:inherit;
   margin-bottom: 50px; 
@@ -93,7 +93,7 @@ color: black;
 }
 
 .container{
-  height: 450px;
+  height: 500px;
   text-align: center;
   margin-top: 10px;
   border-radius: 20px;
