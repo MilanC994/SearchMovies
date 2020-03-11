@@ -92,12 +92,10 @@ const mapStateToProps=state=>
 {
     return{
         movieDetails:state.moviesReducer.movieDetails,
-        tvShowDetails:state.tvShowsReducer.tvShowDetails,
         fetchMovieDetailsURL:state.moviesReducer.fetchMovieDetailsURL,
         searchTvShowDetailsURL:state.tvShowsReducer.searchTvShowDetailsURL,
         myAPIkey:state.moviesReducer.myAPIkey,
         videos:state.moviesReducer.videos,
-        searchBar:state.navbarReducer.searchBar,
         tab:state.navbarReducer.currentTab
     }
 }

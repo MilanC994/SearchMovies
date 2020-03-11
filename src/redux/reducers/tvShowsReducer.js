@@ -3,7 +3,6 @@ import produce from 'immer'
 
 const initialTVShowsState ={
     tvShows:[],
-    tvShowDetails:[],
     searchTvShowDetailsURL:"https://api.themoviedb.org/3/tv/",
     topTVShowsURL:"https://api.themoviedb.org/3/tv/top_rated?&api_key=78688beda45d758ccfa30212f75784ef",
     searchTVShowsURL:"https://api.themoviedb.org/3/search/tv?api_key=78688beda45d758ccfa30212f75784ef&language=en-US&query="
