@@ -79,7 +79,9 @@ class Navbar extends React.Component {
 
     return (
       <div className="header">
+        <div className="PageSwitch">
          <Link to="/movies"><button className={this.moviesBtnClass()} >Movies</button></Link><Link to="/"><button className={this.tvShowBtnClass()} >TV Shows</button><br/></Link>
+         </div>
           <div className="searhhBoxDiv"><input ref={this.searchBarRef} type="text"  onChange={this.onsearchChange} placeholder="Enter Search Term"/><img src={searchLogo}/></div>
       </div>
 
@@ -88,11 +90,11 @@ class Navbar extends React.Component {
   }
 
   tvShowBtnClass() {
-    return this.props.tab == "tvShows" ? ("btn blackBtn") : ("btn whiteBtn");
+    return this.props.tab == "tvShows" ? ("btn rightBtn activeBtn") : ("btn rightBtn inactiveBtn");
   }
 
   moviesBtnClass() {
-    return this.props.tab == "movies" ? ("btn blackBtn") : ("btn whiteBtn");
+    return this.props.tab == "movies" ? ("btn leftBtn activeBtn") : ("btn leftBtn inactiveBtn");
   }
 }
     
