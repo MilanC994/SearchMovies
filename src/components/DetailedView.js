@@ -64,7 +64,7 @@ class DetailedView extends Component {
     
     render() { 
         
-        
+        const title = this.props.movieDetails.title ? (this.props.movieDetails.title):(this.props.movieDetails.name)
         
         return ( 
             <React.Fragment>
@@ -73,7 +73,7 @@ class DetailedView extends Component {
                 
             <iframe  scrolling="no" width={this.getWidth()} height={450} src={this.checkVideos(this.props.videos)}>
                 </iframe>
-                <h1>{this.props.movieDetails.title}{this.props.movieDetails.name}</h1>
+                <h1>{title}</h1>
                 <p>{this.props.movieDetails.overview}</p>
                 
 
