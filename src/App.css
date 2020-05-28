@@ -1,59 +1,49 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 
 .App {
-  
   width: 60%;
-  margin:auto;
-  background-color:inherit;
-  margin-bottom: 50px; 
+  margin: auto;
+  background-color: inherit;
+  margin-bottom: 50px;
   margin-top: 20px;
-
 }
-.searhhBoxDiv
-{
-position: relative;
-
+.searhhBoxDiv {
+  position: relative;
 }
-.searhhBoxDiv>img
-{
-position: absolute;
-left: 5px;bottom: 4px;
+.searhhBoxDiv > img {
+  position: absolute;
+  left: 5px;
+  bottom: 4px;
 }
 
-
-.iframeDV, .iframeDV>iframe
-{
+.iframeDV,
+.iframeDV > iframe {
   border-radius: 10px;
   margin: auto;
   text-align: center;
   font-family: "Roboto", sans-serif;
-
 }
-.iframeDV>h1{
-  color: #707C8B;
+.iframeDV > h1 {
+  color: #707c8b;
 }
-.iframeDV>p
-{
-  color: #707C8B;
-text-align: center;
-font-size: 20px;
+.iframeDV > p {
+  color: #707c8b;
+  text-align: center;
+  font-size: 20px;
 }
 
-.activeBtn
-{
-  background-color: #5ED0C0;
+.activeBtn {
+  background-color: #5ed0c0;
   color: white;
 }
-.inactiveBtn
-{
-  background-color: #4C5D72;
-  color: #9DA6B1;
+.inactiveBtn {
+  background-color: #4c5d72;
+  color: #9da6b1;
 }
-.btn
-{
+.btn {
   padding: 10px 25px;
   cursor: pointer;
-  font-size: .9em;
+  font-size: 0.9em;
   border: none;
   outline: none;
   display: inline-block;
@@ -68,46 +58,37 @@ font-size: 20px;
   border-bottom-right-radius: 25px;
 }
 
-
-#root
-{
-  background-color: #2E4158;
+#root {
+  background-color: #2e4158;
   overflow: hidden;
   min-height: 100vh;
-  
-
 }
-.header
-{
+.header {
   padding-left: 10px;
   margin-top: 10px;
   width: 100%;
   margin-bottom: 20px;
 }
-.header>button
-{
+.header > button {
   font-size: 15px;
-  
 }
-.header input
-{
+.header input {
   margin-top: 15px;
   font-size: 20px;
   width: 94%;
   height: 100%;
   padding-left: 30px;
   border-radius: 10px;
-  background:rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.3);
   color: white;
 }
-.moviesOrTVShowsContainer
-{
-  display:flex;
+.moviesOrTVShowsContainer {
+  display: flex;
   flex-wrap: wrap;
   text-align: center;
 }
 
-.container{
+.container {
   height: 65vh;
   text-align: center;
   margin-top: 10px;
@@ -115,44 +96,35 @@ font-size: 20px;
   margin-left: 20px;
   margin-right: 20px;
   color: #fff;
-  flex: 1 1  40%;
+  flex: 1 1 40%;
   min-width: 40%;
   max-width: 50%;
   overflow: hidden;
- position: relative;
- background-repeat: no-repeat;
- background-position: center center;
-background-size: 100% 100%;
- box-shadow: 0px 0px 10px 2px black;
-
-
- 
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  box-shadow: 0px 0px 10px 2px black;
 }
-.hiddenDiv
-{
-height: 100%;
-width: 100%;
-background-color: black;
-opacity: 0.8;
-display: none;
-position: relative;
-
+.hiddenDiv {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.8;
+  display: none;
+  position: relative;
 }
 
-.hiddenDiv>img
-{
+.hiddenDiv > img {
   position: absolute;
-  top:40%;
-
+  top: 40%;
 }
 
-.container:hover .hiddenDiv
-{
-display: inline-block;
+.container:hover .hiddenDiv {
+  display: inline-block;
 }
 
-.h2div
-{
+.h2div {
   width: 100%;
   min-height: 70px;
   background-color: black;
@@ -163,35 +135,27 @@ display: inline-block;
   bottom: 0;
 }
 
-.App>h1
-{
+.App > h1 {
   color: #ffbed1;
 }
-.container:hover{
+.container:hover {
   cursor: pointer;
 }
-@media (max-width:750px) {
-  .iframeDV>iframe {
-
-      width: 70vw;
-      height: 50vh;
-    
+@media (max-width: 750px) {
+  .iframeDV > iframe {
+    width: 70vw;
+    height: 50vh;
   }
-  #root
-  {
+  #root {
     text-align: center;
   }
-  .App
-  {
+  .App {
     width: 80%;
   }
 
-  .container{
+  .container {
     min-width: 90%;
-   min-height: 300px;
-   height: 70vh;
-
-    
+    min-height: 300px;
+    height: 70vh;
   }
 }
-

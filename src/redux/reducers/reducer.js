@@ -1,13 +1,12 @@
-import moviesReducer from './moviesReducer'
-import tvShowsReducer from './tvShowsReducer'
-import navbarReducer from './navbarReducer'
-import {combineReducers} from 'redux'
+import moviesReducer from "./moviesReducer";
+import tvShowsReducer from "./tvShowsReducer";
+import navbarReducer from "./navbarReducer";
+import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({moviesReducer,tvShowsReducer,navbarReducer})
+const rootReducer = combineReducers({
+  moviesReducer,
+  tvShowsReducer,
+  navbarReducer,
+});
 
-
-export default rootReducer
-
-
-
-
+export default rootReducer;
