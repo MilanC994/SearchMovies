@@ -17,6 +17,7 @@ class Navbar extends React.Component {
   }
 
   performSearch(searchTerm) {
+    const myApiKey = process.env.REACT_APP_MY_API_KEY;
     let url,
       length = searchTerm.length;
     this.props.setSearchBar(searchTerm);
@@ -26,13 +27,13 @@ class Navbar extends React.Component {
 
         this.props.fetchMovies(url);
       } else if (this.props.tab == "tvShows") {
-        url = this.props.topTVShowsURL;
+        url = this.props.topTVShowsURL + myApiKey;
         this.props.fetchTVShows(url);
       }
     }
     if (searchTerm.length > 2) {
       if (this.props.tab == "movies") {
-        url = this.props.searchMoviesURL;
+        url = this.props.searchMoviesURL+ myApiKey+"&language=en-US&query=";
         url += searchTerm;
         this.props.fetchMovies(url);
       } else if (this.props.tab == "tvShows") {

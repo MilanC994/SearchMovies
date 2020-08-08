@@ -6,19 +6,20 @@ import { Link } from "react-router-dom";
 class DetailedView extends Component {
   componentDidMount() {
     let baseURL;
+    const myApiKey = process.env.REACT_APP_MY_API_KEY
     if (this.props.tab == "movies") {
       baseURL = this.props.fetchMovieDetailsURL;
       this.props.fetchMovieDetails(
-        baseURL + this.props.match.params.id + this.props.myAPIkey
+        baseURL + this.props.match.params.id + myApiKey
       );
     } else {
       baseURL = this.props.searchTvShowDetailsURL;
       this.props.fetchMovieDetails(
-        baseURL + this.props.match.params.id + this.props.myAPIkey
+        baseURL + this.props.match.params.id + myApiKey
       );
     }
     this.props.fetchVideos(
-      baseURL + this.props.match.params.id + "/videos" + this.props.myAPIkey
+      baseURL + this.props.match.params.id + "/videos" + myApiKey
     );
   }
 
@@ -87,7 +88,6 @@ const mapStateToProps = (state) => {
     movieDetails: state.moviesReducer.movieDetails,
     fetchMovieDetailsURL: state.moviesReducer.fetchMovieDetailsURL,
     searchTvShowDetailsURL: state.tvShowsReducer.searchTvShowDetailsURL,
-    myAPIkey: state.moviesReducer.myAPIkey,
     videos: state.moviesReducer.videos,
     tab: state.navbarReducer.currentTab,
   };

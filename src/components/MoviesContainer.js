@@ -11,7 +11,7 @@ class MoviesContainer extends Component {
     if (this.props.searchBar == null || this.props.searchBar.length < 3) {
       this.props.fetchMovies(this.props.topMoviesURL+myApiKey);
     } else {
-      this.props.fetchMovies(this.props.searchMoviesURL + this.props.searchBar);
+      this.props.fetchMovies(this.props.searchMoviesURL+ myApiKey+"&language=en-US&query=" + this.props.searchBar);
     }
   }
 

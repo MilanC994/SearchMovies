@@ -5,9 +5,10 @@ import Slot from "./Slot";
 
 class TVShowsContainer extends Component {
   componentDidMount() {
+    const myApiKey = process.env.REACT_APP_MY_API_KEY
     this.props.setTab("tvShows");
     if (this.props.searchBar == null || this.props.searchBar.length < 3) {
-      this.props.fetchTVShows(this.props.topTVShowsURL);
+      this.props.fetchTVShows(this.props.topTVShowsURL+myApiKey);
     } else {
       this.props.fetchTVShows(
         this.props.searchTVShowsURL + this.props.searchBar

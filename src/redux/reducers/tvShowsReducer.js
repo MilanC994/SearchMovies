@@ -5,7 +5,7 @@ const initialTVShowsState = {
   tvShows: [],
   searchTvShowDetailsURL: "https://api.themoviedb.org/3/tv/",
   topTVShowsURL:
-    "https://api.themoviedb.org/3/tv/top_rated?&api_key=78688beda45d758ccfa30212f75784ef",
+    "https://api.themoviedb.org/3/tv/top_rated",
   searchTVShowsURL:
     "https://api.themoviedb.org/3/search/tv?api_key=78688beda45d758ccfa30212f75784ef&language=en-US&query=",
 };
