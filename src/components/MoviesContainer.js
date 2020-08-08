@@ -6,7 +6,6 @@ import { fetchMovies, setTab } from "../redux/actions";
 class MoviesContainer extends Component {
   componentDidMount() {
     const myApiKey = process.env.REACT_APP_MY_API_KEY;
-    console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>.API KEY", myApiKey)
     this.props.setTab("movies");
     if (this.props.searchBar == null || this.props.searchBar.length < 3) {
       this.props.fetchMovies(this.props.topMoviesURL+myApiKey);

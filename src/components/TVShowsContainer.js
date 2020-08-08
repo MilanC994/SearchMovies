@@ -11,7 +11,7 @@ class TVShowsContainer extends Component {
       this.props.fetchTVShows(this.props.topTVShowsURL+myApiKey);
     } else {
       this.props.fetchTVShows(
-        this.props.searchTVShowsURL + this.props.searchBar
+        this.props.searchTVShowsURL  + myApiKey+"&language=en-US&query=" + this.props.searchBar
       );
     }
   }

@@ -37,7 +37,7 @@ class Navbar extends React.Component {
         url += searchTerm;
         this.props.fetchMovies(url);
       } else if (this.props.tab == "tvShows") {
-        url = this.props.searchTVShowsURL;
+        url = this.props.searchTVShowsURL + myApiKey+"&language=en-US&query=";
         url += searchTerm;
         this.props.fetchTVShows(url);
       }
@@ -46,7 +46,6 @@ class Navbar extends React.Component {
   onsearchChange = (event) => {
     this.searchTerm = event.target.value;
     if (this.timeout) {
-      console.log(this.timeout);
       clearTimeout(this.timeout);
     }
     this.timeout = setTimeout(() => this.performSearch(this.searchTerm), 1000);
