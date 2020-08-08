@@ -12,7 +12,7 @@ const initialMoviesState = {
   fetchMovieDetailsURL: "https://api.themoviedb.org/3/movie/",
   myAPIkey: "?api_key=78688beda45d758ccfa30212f75784ef",
   topMoviesURL:
-    "https://api.themoviedb.org/3/movie/top_rated?&api_key=78688beda45d758ccfa30212f75784ef",
+    "https://api.themoviedb.org/3/movie/top_rated",
   searchMoviesURL:
     "https://api.themoviedb.org/3/search/movie?api_key=78688beda45d758ccfa30212f75784ef&language=en-US&query=",
 };
