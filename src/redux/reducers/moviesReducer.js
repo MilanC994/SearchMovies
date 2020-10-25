@@ -8,20 +8,12 @@ import produce from "immer";
 const initialMoviesState = {
   movies: [],
   movieDetails: [],
-  videos: [],
-  fetchMovieDetailsURL: "https://api.themoviedb.org/3/movie/",
-  topMoviesURL:
-    "https://api.themoviedb.org/3/movie/top_rated",
-  searchMoviesURL:
-    "https://api.themoviedb.org/3/search/movie",
+  videos: []
 };
 
 const moviesReducer = (state = initialMoviesState, action) => {
   switch (action.type) {
     case FETCH_MOVIES: {
-      if (action.limit) {
-        action.payload.results.length = 10;
-      }
       return produce(state, (draft) => {
         draft.movies = action.payload.results;
       });

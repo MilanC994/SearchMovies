@@ -1,9 +1,10 @@
-import { SET_TAB, SET_SEARCH_BAR } from "../constActions";
+import { SET_TAB, SET_SEARCH_BAR,SET_URL } from "../constActions";
 import produce from "immer";
 
 const initialNavbarState = {
   currentTab: "tvShows",
   searchBar: "",
+  url:process.env.REACT_APP_TOP_MOVIES_URL +process.env.REACT_APP_MY_API_KEY
 };
 
 const navbarReducer = (state = initialNavbarState, action) => {
@@ -14,7 +15,10 @@ const navbarReducer = (state = initialNavbarState, action) => {
       });
     }
     case SET_SEARCH_BAR: {
-      return { ...state, searchBar: action.payload };
+      return { ...state, searchBar: action.payload }
+    }
+    case SET_URL:{
+      return{...state, url:action.payload }
     }
 
     default: {

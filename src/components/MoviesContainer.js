@@ -1,23 +1,24 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import Slot from "./Slot";
-import { connect } from "react-redux";
-import { fetchMovies, setTab } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData, setTab } from "../redux/actions";
+import useContentContainer from "./hooks/useContentContainer"
 
-class MoviesContainer extends Component {
-  componentDidMount() {
-    const myApiKey = process.env.REACT_APP_MY_API_KEY;
-    this.props.setTab("movies");
-    if (this.props.searchBar == null || this.props.searchBar.length < 3) {
-      this.props.fetchMovies(this.props.topMoviesURL+myApiKey);
-    } else {
-      this.props.fetchMovies(this.props.searchMoviesURL+ myApiKey+"&language=en-US&query=" + this.props.searchBar);
-    }
-  }
+function MoviesContainer(props){
 
-  render() {
+  const url = useSelector((state) => state.navbarReducer.url)
+  useContentContainer(fetchData,url) 
+  // useEffect(()=>{
+  //   const fetch = async () => {
+  //     await dispatch(fetchData(url))
+  //   };
+ 
+  //   fetch();
+  // },[url])
+  const movies = useSelector((state) => state.moviesReducer.movies)
     return (
       <div className="moviesOrTVShowsContainer">
-        {this.props.movies.map((movie) => (
+        {movies.map((movie) => (
           <Slot
             key={movie.id}
             typeOfContent="movies"
@@ -30,7 +31,7 @@ class MoviesContainer extends Component {
         ))}
       </div>
     );
-  }
+  
 }
 
 const mapStateToProps = (state) => {
@@ -40,13 +41,14 @@ const mapStateToProps = (state) => {
     searchMoviesURL: state.moviesReducer.searchMoviesURL,
     tab: state.navbarReducer.currentTab,
     searchBar: state.navbarReducer.searchBar,
+    url: state.navbarReducer.url
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovies: (url) => dispatch(fetchMovies(url)),
+    fetchData: (url) => dispatch(fetchData(url)),
     setTab: (tab) => dispatch(setTab(tab)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviesContainer);
+export default MoviesContainer

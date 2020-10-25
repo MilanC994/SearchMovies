@@ -5,3 +5,4 @@ export const SET_TAB = "SET_TAB";
 export const SET_SEARCH_BAR = "SET_SEARCH_BAR";
 export const FETCH_MOVIE_DETAILS = "FETCH_MOVIE_DETAILS";
 export const FETCH_VIDEOS = "FETCH_VIDEOS";
+export const SET_URL = "SET_URL"

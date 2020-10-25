@@ -1,93 +1,58 @@
 import React from "react";
-import { connect } from "react-redux";
+
 import { Link } from "react-router-dom";
-import { fetchMovies, fetchTVShows, setSearchBar } from "../redux/actions";
+import { fetchData, setSearchBar, setURL } from "../redux/actions";
 import searchLogo from "../imgs/icons8searchbar.png";
+import {useSelector} from 'react-redux'
+import {useSearch} from './hooks/useSearch'
+import useNavbar  from './hooks/useNavbar'
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.timeout = 0;
-    this.searchTerm = "";
-    this.searchBarRef = React.createRef();
-  }
-  componentDidMount() {
-    this.searchBarRef.current.value = this.props.searchBar;
-  }
-
-  performSearch(searchTerm) {
-    const myApiKey = process.env.REACT_APP_MY_API_KEY;
-    let url,
-      length = searchTerm.length;
-    this.props.setSearchBar(searchTerm);
-    if (length <= 2 || length == null) {
-      if (this.props.tab == "movies") {
-        url = this.props.topMoviesURL;
-
-        this.props.fetchMovies(url);
-      } else if (this.props.tab == "tvShows") {
-        url = this.props.topTVShowsURL + myApiKey;
-        this.props.fetchTVShows(url);
-      }
+  function Navbar(props) {
+    const searchBar = useSelector((state) => state.navbarReducer.searchBar)
+    // const url = useSelector((state) => state.navbarReducer.url)
+    const tab = useSelector((state) => state.navbarReducer.currentTab) 
+    const searchMoviesUrl = useSelector((state) => state.moviesReducer.searchMoviesURL)
+    const {onSearchTextChange, showBackBtn} = useSearch(setSearchBar, false)
+    useNavbar(setURL,searchBar,tab)
+    
+    const  tvShowBtnClass =() => {
+      return props.tab == "tvShows"
+        ? "btn rightBtn activeBtn"
+        : "btn rightBtn inactiveBtn";
     }
-    if (searchTerm.length > 2) {
-      if (this.props.tab == "movies") {
-        url = this.props.searchMoviesURL+ myApiKey+"&language=en-US&query=";
-        url += searchTerm;
-        this.props.fetchMovies(url);
-      } else if (this.props.tab == "tvShows") {
-        url = this.props.searchTVShowsURL + myApiKey+"&language=en-US&query=";
-        url += searchTerm;
-        this.props.fetchTVShows(url);
-      }
-    }
+  
+    const moviesBtnClass = ()=> {
+      return props.tab == "movies"
+        ? "btn leftBtn activeBtn"
+        : "btn leftBtn inactiveBtn";
+    
   }
-  onsearchChange = (event) => {
-    this.searchTerm = event.target.value;
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-    this.timeout = setTimeout(() => this.performSearch(this.searchTerm), 1000);
-  };
-
-  render() {
+      
     return (
       <div className="header">
         <div className="PageSwitch">
           <Link to="/movies">
-            <button className={this.moviesBtnClass()}>Movies</button>
+            <button className={moviesBtnClass()}>Movies</button>
           </Link>
           <Link to="/">
-            <button className={this.tvShowBtnClass()}>TV Shows</button>
+            <button className={tvShowBtnClass()}>TV Shows</button>
             <br />
           </Link>
         </div>
         <div className="searhhBoxDiv">
           <input
-            ref={this.searchBarRef}
             type="text"
-            onChange={this.onsearchChange}
+            value={searchBar}
+            onChange={(e)=>onSearchTextChange(e.target.value)}
             placeholder="Enter Search Term"
           />
           <img src={searchLogo} />
         </div>
       </div>
     );
-  }
-
-  tvShowBtnClass() {
-    return this.props.tab == "tvShows"
-      ? "btn rightBtn activeBtn"
-      : "btn rightBtn inactiveBtn";
-  }
-
-  moviesBtnClass() {
-    return this.props.tab == "movies"
-      ? "btn leftBtn activeBtn"
-      : "btn leftBtn inactiveBtn";
-  }
 }
+
+
 
 const mapStateToProps = (state) => {
   return {
@@ -97,14 +62,13 @@ const mapStateToProps = (state) => {
     searchTVShowsURL: state.tvShowsReducer.searchTVShowsURL,
     searchBar: state.navbarReducer.searchBar,
     tab: state.navbarReducer.currentTab,
-  };
-};
+  }
+}
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMovies: (url) => dispatch(fetchMovies(url)),
-    fetchTVShows: (url) => dispatch(fetchTVShows(url)),
+    fetchData: (url) => dispatch(fetchData(url)),
     setSearchBar: (val) => dispatch(setSearchBar(val)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
+export default Navbar

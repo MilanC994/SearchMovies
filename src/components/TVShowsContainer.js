@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { fetchTVShows, setTab } from "../redux/actions";
+import { fetchData, setTab } from "../redux/actions";
 import { connect } from "react-redux";
 import Slot from "./Slot";
 
@@ -8,9 +8,9 @@ class TVShowsContainer extends Component {
     const myApiKey = process.env.REACT_APP_MY_API_KEY
     this.props.setTab("tvShows");
     if (this.props.searchBar == null || this.props.searchBar.length < 3) {
-      this.props.fetchTVShows(this.props.topTVShowsURL+myApiKey);
+      this.props.fetchData(this.props.topTVShowsURL+myApiKey);
     } else {
-      this.props.fetchTVShows(
+      this.props.fetchData(
         this.props.searchTVShowsURL  + myApiKey+"&language=en-US&query=" + this.props.searchBar
       );
     }
@@ -45,7 +45,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchTVShows: (url) => dispatch(fetchTVShows(url)),
+    fetchData: (url) => dispatch(fetchData(url)),
     setTab: (tab) => dispatch(setTab(tab)),
   };
 };
