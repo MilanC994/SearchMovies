@@ -1,10 +1,10 @@
-import moviesReducer from "./moviesReducer";
+import dataReducer from "./dataReducer";
 import tvShowsReducer from "./tvShowsReducer";
 import navbarReducer from "./navbarReducer";
 import { combineReducers } from "redux";
 
 const rootReducer = combineReducers({
-  moviesReducer,
+  dataReducer,
   tvShowsReducer,
   navbarReducer,
 });

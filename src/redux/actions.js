@@ -56,13 +56,14 @@ export const setSearchBar = (value) => {
 export const setURL = (value,tab) => {
 
   let url
+  console.log(tab, tab ==='movies', tab=='movies')
   if(tab ==='movies'){
     console.log("tab je movies")
     url = value.length>2 ? process.env.REACT_APP_SEARCH_MOVIES_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_MOVIES_URL +process.env.REACT_APP_MY_API_KEY;   
   }
   else{
     console.log("else nekako..", value.length)
-    url = value.length>2 ? process.env.REACT_APP_SEARCH_MOVIES_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_MOVIES_URL +process.env.REACT_APP_MY_API_KEY;
+    url = value.length>2 ? process.env.REACT_APP_SEARCH_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY;
   }
   console.log("U Akciji SET URL URL : ", url)
   return {

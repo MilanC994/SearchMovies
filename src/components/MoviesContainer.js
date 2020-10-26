@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import Slot from "./Slot";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchData, setTab } from "../redux/actions";
 import useContentContainer from "./hooks/useContentContainer"
 
 function MoviesContainer(props){
-
+  const tab = 'movies'
   const url = useSelector((state) => state.navbarReducer.url)
-  useContentContainer(fetchData,url) 
+  useContentContainer(fetchData,url,setTab,tab) 
   // useEffect(()=>{
   //   const fetch = async () => {
   //     await dispatch(fetchData(url))
@@ -15,7 +15,7 @@ function MoviesContainer(props){
  
   //   fetch();
   // },[url])
-  const movies = useSelector((state) => state.moviesReducer.movies)
+  const movies = useSelector((state) => state.dataReducer.data)
     return (
       <div className="moviesOrTVShowsContainer">
         {movies.map((movie) => (

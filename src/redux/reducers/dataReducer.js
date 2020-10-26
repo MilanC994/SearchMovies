@@ -6,22 +6,22 @@ import {
 import produce from "immer";
 
 const initialMoviesState = {
-  movies: [],
-  movieDetails: [],
+  data: [],
+  contentDetails: [],
   videos: []
 };
 
-const moviesReducer = (state = initialMoviesState, action) => {
+const dataReducer = (state = initialMoviesState, action) => {
   switch (action.type) {
     case FETCH_MOVIES: {
       return produce(state, (draft) => {
-        draft.movies = action.payload.results;
+        draft.data = action.payload.results;
       });
     }
 
     case FETCH_MOVIE_DETAILS: {
       return produce(state, (draft) => {
-        draft.movieDetails = action.payload;
+        draft.contentDetails = action.payload;
       });
     }
     case FETCH_VIDEOS: {
@@ -36,4 +36,4 @@ const moviesReducer = (state = initialMoviesState, action) => {
   }
 };
 
-export default moviesReducer;
+export default dataReducer;

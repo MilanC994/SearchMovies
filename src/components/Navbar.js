@@ -11,7 +11,6 @@ import useNavbar  from './hooks/useNavbar'
     const searchBar = useSelector((state) => state.navbarReducer.searchBar)
     // const url = useSelector((state) => state.navbarReducer.url)
     const tab = useSelector((state) => state.navbarReducer.currentTab) 
-    const searchMoviesUrl = useSelector((state) => state.moviesReducer.searchMoviesURL)
     const {onSearchTextChange, showBackBtn} = useSearch(setSearchBar, false)
     useNavbar(setURL,searchBar,tab)
     

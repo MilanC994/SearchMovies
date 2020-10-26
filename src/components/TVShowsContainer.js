@@ -1,25 +1,24 @@
-import React, { Component } from "react";
-import { fetchData, setTab } from "../redux/actions";
-import { connect } from "react-redux";
+import React, { useEffect } from "react";
 import Slot from "./Slot";
+import { useSelector } from "react-redux";
+import { fetchData, setTab } from "../redux/actions";
+import useContentContainer from "./hooks/useContentContainer"
 
-class TVShowsContainer extends Component {
-  componentDidMount() {
-    const myApiKey = process.env.REACT_APP_MY_API_KEY
-    this.props.setTab("tvShows");
-    if (this.props.searchBar == null || this.props.searchBar.length < 3) {
-      this.props.fetchData(this.props.topTVShowsURL+myApiKey);
-    } else {
-      this.props.fetchData(
-        this.props.searchTVShowsURL  + myApiKey+"&language=en-US&query=" + this.props.searchBar
-      );
-    }
-  }
-
-  render() {
+function TVShowsContainer(props){
+  const tab = 'tvShows'
+  const url = useSelector((state) => state.navbarReducer.url)
+  useContentContainer(fetchData,url,setTab, tab) 
+  // useEffect(()=>{
+  //   const fetch = async () => {
+  //     await dispatch(fetchData(url))
+  //   };
+ 
+  //   fetch();
+  // },[url])
+  const tvShows = useSelector((state) => state.dataReducer.data)
     return (
       <div className="moviesOrTVShowsContainer">
-        {this.props.tvShows.map((tvShow) => (
+        {tvShows.map((tvShow) => (
           <Slot
             key={tvShow.id}
             id={tvShow.id}
@@ -32,7 +31,7 @@ class TVShowsContainer extends Component {
         ))}
       </div>
     );
-  }
+  
 }
 
 const mapStateToProps = (state) => {
@@ -50,4 +49,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TVShowsContainer);
+export default TVShowsContainer
