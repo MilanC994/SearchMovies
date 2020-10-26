@@ -15,13 +15,13 @@ import useNavbar  from './hooks/useNavbar'
     useNavbar(setURL,searchBar,tab)
     
     const  tvShowBtnClass =() => {
-      return props.tab == "tvShows"
+      return tab == "tvShows"
         ? "btn rightBtn activeBtn"
         : "btn rightBtn inactiveBtn";
     }
   
     const moviesBtnClass = ()=> {
-      return props.tab == "movies"
+      return tab == "movies"
         ? "btn leftBtn activeBtn"
         : "btn leftBtn inactiveBtn";
     
@@ -50,24 +50,5 @@ import useNavbar  from './hooks/useNavbar'
       </div>
     );
 }
-
-
-
-const mapStateToProps = (state) => {
-  return {
-    topMoviesURL: state.moviesReducer.topMoviesURL,
-    topTVShowsURL: state.tvShowsReducer.topTVShowsURL,
-    searchMoviesURL: state.moviesReducer.searchMoviesURL,
-    searchTVShowsURL: state.tvShowsReducer.searchTVShowsURL,
-    searchBar: state.navbarReducer.searchBar,
-    tab: state.navbarReducer.currentTab,
-  }
-}
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: (url) => dispatch(fetchData(url)),
-    setSearchBar: (val) => dispatch(setSearchBar(val)),
-  };
-};
 
 export default Navbar

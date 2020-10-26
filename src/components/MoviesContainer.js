@@ -34,21 +34,4 @@ function MoviesContainer(props){
   
 }
 
-const mapStateToProps = (state) => {
-  return {
-    movies: state.moviesReducer.movies,
-    topMoviesURL: state.moviesReducer.topMoviesURL,
-    searchMoviesURL: state.moviesReducer.searchMoviesURL,
-    tab: state.navbarReducer.currentTab,
-    searchBar: state.navbarReducer.searchBar,
-    url: state.navbarReducer.url
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: (url) => dispatch(fetchData(url)),
-    setTab: (tab) => dispatch(setTab(tab)),
-  };
-};
-
 export default MoviesContainer

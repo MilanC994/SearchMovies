@@ -34,19 +34,4 @@ function TVShowsContainer(props){
   
 }
 
-const mapStateToProps = (state) => {
-  return {
-    tvShows: state.tvShowsReducer.tvShows,
-    topTVShowsURL: state.tvShowsReducer.topTVShowsURL,
-    searchTVShowsURL: state.tvShowsReducer.searchTVShowsURL,
-    searchBar: state.navbarReducer.searchBar,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: (url) => dispatch(fetchData(url)),
-    setTab: (tab) => dispatch(setTab(tab)),
-  };
-};
-
 export default TVShowsContainer
