@@ -1,7 +1,5 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
-import { fetchData, setSearchBar, setURL } from "../redux/actions";
 import searchLogo from "../imgs/icons8searchbar.png";
 import {useSelector} from 'react-redux'
 import {useSearch} from './hooks/useSearch'
@@ -9,10 +7,9 @@ import useNavbar  from './hooks/useNavbar'
 
   function Navbar(props) {
     const searchBar = useSelector((state) => state.navbarReducer.searchBar)
-    // const url = useSelector((state) => state.navbarReducer.url)
     const tab = useSelector((state) => state.navbarReducer.currentTab) 
-    const {onSearchTextChange, showBackBtn} = useSearch(setSearchBar, false)
-    useNavbar(setURL,searchBar,tab)
+    const {onSearchTextChange, showBackBtn} = useSearch()
+    useNavbar(searchBar,tab)
     
     const  tvShowBtnClass =() => {
       return tab == "tvShows"

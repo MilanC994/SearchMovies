@@ -4,7 +4,7 @@ import produce from "immer";
 const initialNavbarState = {
   currentTab: "tvShows",
   searchBar: "",
-  url:process.env.REACT_APP_TOP_MOVIES_URL +process.env.REACT_APP_MY_API_KEY
+  url:process.env.REACT_APP_TOP_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY
 };
 
 const navbarReducer = (state = initialNavbarState, action) => {

@@ -1,15 +1,18 @@
-import { useEffect,useCallback } from 'react'
+import { useEffect,useCallback, useMemo } from 'react'
+import { setURL } from '../../redux/actions'
 import {useDispatch} from 'react-redux'
 
-const useNavbar = (setUrl, searchTerm, tab) =>{
+const useNavbar = (searchTerm, tab) =>{
     const dispatch = useDispatch()
+   
     useEffect(
         () => {
-            console.log("u Navbar use effectu", searchTerm)
-            dispatch(setUrl(searchTerm,tab))
+            dispatch(setURL(searchTerm,tab))
         },
         [searchTerm,tab]
     )
+
+    
 
 }
 

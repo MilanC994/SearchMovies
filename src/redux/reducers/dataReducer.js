@@ -1,7 +1,7 @@
 import {
   FETCH_VIDEOS,
-  FETCH_MOVIES,
-  FETCH_MOVIE_DETAILS,
+  FETCH_DATA,
+  FETCH_CONTENT_DETAILS,
 } from "../constActions";
 import produce from "immer";
 
@@ -13,13 +13,13 @@ const initialMoviesState = {
 
 const dataReducer = (state = initialMoviesState, action) => {
   switch (action.type) {
-    case FETCH_MOVIES: {
+    case FETCH_DATA: {
       return produce(state, (draft) => {
         draft.data = action.payload.results;
       });
     }
 
-    case FETCH_MOVIE_DETAILS: {
+    case FETCH_CONTENT_DETAILS: {
       return produce(state, (draft) => {
         draft.contentDetails = action.payload;
       });

@@ -1,25 +1,46 @@
 import {
   FETCH_VIDEOS,
-  FETCH_MOVIES,
-  FETCH_TV_SHOWS,
+  FETCH_DATA,
   SET_TAB,
   SET_SEARCH_BAR,
-  FETCH_MOVIE_DETAILS,
+  FETCH_CONTENT_DETAILS,
   FETCH_TV_SHOW_DETAILS,
   SET_URL
 } from "./constActions";
 import axios from "axios";
 
+const getVideosUrl = (tab, id) => {
+  return tab === 'movies' ? 
+  process.env.REACT_APP_MOVIE_DETAILS_URL + id  + "/videos" +  process.env.REACT_APP_MY_API_KEY
+  :
+  process.env.REACT_APP__TV_SHOW_DETAILS_URL + id +  "/videos"  + process.env.REACT_APP_MY_API_KEY
+}
+
+const getFetchDetailsUrl = (tab, id) => {
+  return tab === 'movies' ? 
+  process.env.REACT_APP_MOVIE_DETAILS_URL + id + process.env.REACT_APP_MY_API_KEY 
+  :
+  process.env.REACT_APP__TV_SHOW_DETAILS_URL + id + process.env.REACT_APP_MY_API_KEY
+
+}
+
+const getUrl = (value,tab) => {
+  if(tab ==='movies'){
+    return value.length>2 ? process.env.REACT_APP_SEARCH_MOVIES_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_MOVIES_URL +process.env.REACT_APP_MY_API_KEY;   
+  }
+  
+  return value.length>2 ? process.env.REACT_APP_SEARCH_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY;
+
+
+}
 
 export const fetchData = (url) => {
-  console.log("CALLING FETCH  ", url)
   return (dispatch) =>
     axios
       .get(url)
       .then((response) => {
-        console.log(response, "<<<RESPOOONSE")
         dispatch({
-          type: FETCH_MOVIES,
+          type: FETCH_DATA,
           payload: response.data,
           limit: true,
         });
@@ -27,7 +48,8 @@ export const fetchData = (url) => {
       .catch((er) => console.log(er));
 };
 
-export const fetchVideos = (url) => {
+export const fetchVideos = (tab, id) => {
+  const url = getVideosUrl(tab,id)
   return (dispatch) =>
     axios
       .get(url)
@@ -36,36 +58,26 @@ export const fetchVideos = (url) => {
       })
       .catch((er) => console.log(er));
 };
-export const fetchMovieDetails = (url) => {
+export const fetchContentDetails = (tab, id) => {
+  const url = getFetchDetailsUrl(tab, id)
   return (dispatch) =>
     axios
       .get(url)
       .then((response) => {
-        dispatch({ type: FETCH_MOVIE_DETAILS, payload: response.data });
+        dispatch({ type: FETCH_CONTENT_DETAILS, payload: response.data });
       })
       .catch((er) => console.log(er));
 };
 
 export const setSearchBar = (value) => {
-  console.log("Setting Search Bar")
   return {
     type: SET_SEARCH_BAR,
     payload: value,
   }
 }
-export const setURL = (value,tab) => {
+export const setURL = (value, tab) => {
 
-  let url
-  console.log(tab, tab ==='movies', tab=='movies')
-  if(tab ==='movies'){
-    console.log("tab je movies")
-    url = value.length>2 ? process.env.REACT_APP_SEARCH_MOVIES_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_MOVIES_URL +process.env.REACT_APP_MY_API_KEY;   
-  }
-  else{
-    console.log("else nekako..", value.length)
-    url = value.length>2 ? process.env.REACT_APP_SEARCH_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY + "&language=en-US&query=" + value : process.env.REACT_APP_TOP_TV_SHOWS_URL +process.env.REACT_APP_MY_API_KEY;
-  }
-  console.log("U Akciji SET URL URL : ", url)
+  const url = getUrl(value, tab)
   return {
     type: SET_URL,
     payload: url,

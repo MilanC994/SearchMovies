@@ -1,102 +1,40 @@
-import React, { Component } from "react";
-import { fetchVideos, fetchMovieDetails } from "../redux/actions";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useDetailedView } from './hooks/useDetailedView'
+import { useSelector } from "react-redux";
 
-class DetailedView extends Component {
-  componentDidMount() {
-    let baseURL;
-    const myApiKey = process.env.REACT_APP_MY_API_KEY
-    if (this.props.tab == "movies") {
-      baseURL = this.props.fetchMovieDetailsURL;
-      this.props.fetchMovieDetails(
-        baseURL + this.props.match.params.id + myApiKey
-      );
-    } else {
-      baseURL = this.props.searchTvShowDetailsURL;
-      this.props.fetchMovieDetails(
-        baseURL + this.props.match.params.id + myApiKey
-      );
-    }
-    this.props.fetchVideos(
-      baseURL + this.props.match.params.id + "/videos" + myApiKey
-    );
-  }
 
-  checkVideos = (videos) => {
-    let key = "noVideo";
-    for (let i = 0; i < videos.length; i++)
-      if (videos[i].site == "YouTube") {
-        key = "https://www.youtube.com/embed/" + videos[i].key;
-        break;
+function DetailedView (props) {
+  const tab = useSelector((state) => state.navbarReducer.currentTab)
+  useDetailedView(tab, props.match.params.id)
+  const movieDetails = useSelector(state => state.dataReducer.contentDetails)
+  const videos =  useSelector(state => state.dataReducer.videos)
+  const video = videos.find(vid => vid.site ==='YouTube')
+  const title = movieDetails.title
+    ? movieDetails.title
+    : movieDetails.name;
+
+  return (
+    <React.Fragment>
+        <label onClick = {props.history.goBack}>
+          <h4>&#60;Back</h4>
+        </label>
+      <div className="iframeDV">
+        {video ? <iframe
+          scrolling="no"
+          width={600}
+          height={450}
+          src={'https://www.youtube.com/embed/'+video.key}
+        ></iframe> 
+        :
+        <img src={'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' +movieDetails.poster_path} />
+      
       }
-    if (key == "noVideo") {
-      key =
-        "https://image.tmdb.org/t/p/w300_and_h450_bestv2" +
-        this.props.movieDetails.poster_path;
-    }
+        <h1>{title}</h1>
+        <p>{movieDetails.overview}</p>
+      </div>
+    </React.Fragment>
+  );
 
-    return key;
-  };
-
-  getBackUrl = () => {
-    if (this.props.tab == "movies") return "/movies";
-    else {
-      return "/";
-    }
-  };
-  getWidth = () => {
-    if (
-      this.checkVideos(this.props.videos).includes(
-        "https://image.tmdb.org/t/p/w300_and_h450_bestv2"
-      )
-    ) {
-      return 300;
-    }
-    return 600;
-  };
-
-  render() {
-    const title = this.props.movieDetails.title
-      ? this.props.movieDetails.title
-      : this.props.movieDetails.name;
-
-    return (
-      <React.Fragment>
-        <Link to={this.getBackUrl()}>
-          <label>
-            <h4>&#60;Back</h4>
-          </label>
-        </Link>
-        <div className="iframeDV">
-          <iframe
-            scrolling="no"
-            width={this.getWidth()}
-            height={450}
-            src={this.checkVideos(this.props.videos)}
-          ></iframe>
-          <h1>{title}</h1>
-          <p>{this.props.movieDetails.overview}</p>
-        </div>
-      </React.Fragment>
-    );
-  }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    movieDetails: state.moviesReducer.movieDetails,
-    fetchMovieDetailsURL: state.moviesReducer.fetchMovieDetailsURL,
-    searchTvShowDetailsURL: state.tvShowsReducer.searchTvShowDetailsURL,
-    videos: state.moviesReducer.videos,
-    tab: state.navbarReducer.currentTab,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchVideos: (url) => dispatch(fetchVideos(url)),
-    fetchMovieDetails: (url) => dispatch(fetchMovieDetails(url)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(DetailedView);
+export default DetailedView
