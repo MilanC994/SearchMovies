@@ -1,21 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import searchPic from "../imgs/search.png";
+const searchPic  = require("../imgs/search.png")
 
-function Slot(props) {
-  var slotStyle = {
+interface Props  {
+  id:string,
+  poster_path: string,
+  title: string | undefined,
+  contentType: string | undefined,
+  description: string,
+  year: string | undefined
+
+}
+
+const  Slot:React.FC<Props> = (props) => {
+  let slotStyle = {
     backgroundImage:
       "url(https://image.tmdb.org/t/p/w600_and_h900_bestv2/" +
       props.poster_path +
       ")",
   };
-  //https://image.tmdb.org/t/p/w300_and_h450_bestv2
-
+  let slotLinkTo = props.contentType === 'movies' ? '/movies/' : '/tv-shows/'
   return (
     <Link
       style={slotStyle}
       className="container"
-      to={"/detailedView/" + props.id}
+      to={slotLinkTo + props.id}
     >
       <div className="hiddenDiv">
         <img src={searchPic} />
@@ -26,6 +35,5 @@ function Slot(props) {
       </div>
     </Link>
   );
-} //<img  style={{width:"100%", height:360,borderRadius:10}} src={'https://image.tmdb.org/t/p/original'+props.poster_path}/>
-
+} 
 export default Slot;
