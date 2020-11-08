@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import searchLogo from "../imgs/icons8searchbar.png";
 import {useSearch} from './hooks/useSearch'
 import useNavbar  from './hooks/useNavbar'
+
+const searchLogo = require('../imgs/icons8searchbar.png')
 
   function Navbar() {
   
