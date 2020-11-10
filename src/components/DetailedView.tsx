@@ -2,10 +2,6 @@ import React from "react";
 import { useDetailedView } from './hooks/useDetailedView'
 import { RouteComponentProps } from 'react-router'
 
-// interface Props extends RouteComponentProps{
-
-// }
-
 interface MatchParams {
   id: string;
 }

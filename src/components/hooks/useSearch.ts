@@ -8,8 +8,6 @@ import _ from 'lodash'
 const SEARCH_DEBOUNCE_TIME = 1000
 
 export function useSearch() {
- // const { error, setError, clearError } = useError()
-
  const selectTab = (state:rootState)=>state.navbarReducer.currentTab
   const tab = useSelector(selectTab)
   const dispatch = useDispatch()
